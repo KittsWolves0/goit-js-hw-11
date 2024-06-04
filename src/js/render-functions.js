@@ -1,34 +1,34 @@
 const gallery = document.querySelector(".list");
 
-export const renderGallery = ({hits}) =>  {
-    return hits.map(item => {
+export const renderGallery = (arr) =>  {
+    return arr.map(({webformatURL, largeImageURL, tags, likes, views, comments, downloads, id}) => {
         `<li class="list-item">
-        <a class="list-link" href="">
+        <a class="list-link" href="${largeImageURL}">
           <img
             class="list-img"
-            src="https://pbs.twimg.com/profile_images/1645415067310252039/0Uk7lKSa_400x400.jpg"
-            alt="dino"
+            src="${webformatURL}"
+            alt="${tags}"
             width="360"
           />
           <ul class="img-list">
             <li class="img-titles">
               <h3>Likes</h3>
-              <p>1</p>
+              <p>${likes}</p>
             </li>
             <li class="img-titles">
               <h3>Views</h3>
-              <p>c</p>
+              <p>${views}</p>
             </li>
             <li class="img-titles">
               <h3>Comments</h3>
-              <p>c</p>
+              <p>${comments}</p>
             </li>
             <li class="img-titles">
               <h3>Downloads</h3>
-              <p>c</p>
+              <p>${downloads}</p>
             </li>
           </ul>
         </a>
       </li>`
-    })
+}).join("");
 }

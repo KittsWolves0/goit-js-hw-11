@@ -13,5 +13,7 @@ form.addEventListener("submit", hendleSearch);
 
 function hendleSearch(event) {
     event.preventDefault();
-    fetchResearch(event.currentTarget.elements.search.value);
+    fetchResearch().then(data => {
+        console.log(data.hits);
+    });
 }
