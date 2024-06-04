@@ -1,13 +1,28 @@
-const gallery = document.querySelector(".list");
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
-export const renderGallery = (arr) =>  {
-    return arr.map(({webformatURL, largeImageURL, tags, likes, views, comments, downloads, id}) => {
-        `<li class="list-item">
+export const gallery = document.querySelector(".gallery");
+let lightbox;
+
+
+export const renderGallery = (arr) => {
+  gallery.innerHTML = markupGallery(arr);
+  if (lightbox) {
+  lightbox.refresh();
+  } else {
+  lightbox = new SimpleLightbox('.gallery a', { overlay: true, opasoverlayOpacity: 0.8, showCounter:false, captionsData: "alt" });
+  }
+}
+
+
+const markupGallery = (arr) =>  {
+    return arr.map(({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) => {
+        return `<li class="list-item">
         <a class="list-link" href="${largeImageURL}">
           <img
-            class="list-img"
             src="${webformatURL}"
             alt="${tags}"
+            class="list-img"
             width="360"
           />
           <ul class="img-list">
@@ -32,3 +47,5 @@ export const renderGallery = (arr) =>  {
       </li>`
 }).join("");
 }
+
+
