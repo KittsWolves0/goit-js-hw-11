@@ -24,6 +24,7 @@ function hendleSearch(event) {
         messageColor: "#FAFAFB",
         message: "Please, please fill in search field"
     });
+    gallery.innerHTML = "";
     return  
     }
 
